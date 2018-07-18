@@ -19,30 +19,32 @@
     }
 
     .menu-container {
+      padding: 5%;
       display: flex;
-      width: 100%;
-      height: 100%;
+      width: 90%;
+      height: 90%;
       align-items: center;
       justify-content: center;
-      max-width: 100vw;
-      min-width: 100vh;
+      max-width: 90vw;
+      min-width: 90vh;
       object-fit: contain;
       position: relative;
     }
 
     .layer {
+      display: flex;
       position: absolute;
       object-fit: contain;
-      max-width: 100vw;
-      max-height: 100vh;
+      max-width: 90vw;
+      max-height: 90vh;
+      height: 90%;
+      width: 90%;
     }
 
     #logo {
       animation: rotation 30s infinite linear;
-    }
-
-    #lines {
-      display: flex;
+      max-width: 33vw;
+      max-height: 33vh;
     }
 
     .title {
@@ -62,7 +64,10 @@
     .title.right svg {
       right: 120px;
     }
-
+svg {
+      width: 100%;
+      height: 100%;
+}
     @keyframes squiggling {
       0% {
         filter: url("#turbulence-1");
@@ -100,54 +105,53 @@
     </div>
     <div class="layer loadable-svg-container" id="brain" data-svg-asset-name="brain.svg"></div>
     <div class="layer loadable-svg-container" id="logo" data-svg-asset-name="logo.svg"></div>
-    <div class="layer loadable-svg-container" id="lines" data-svg-asset-name="brainlines.svg">
+    <div class="layer loadable-svg-container" id="lines" data-svg-asset-name="brainlines.svg"></div>
     <div class="right title"></div>
-    </div>
+  </div>
+  <script type="text/javascript">
 
-    <script type="text/javascript">
-
-      // <filter id="turbulence-1">
-      //   <feTurbulence type="fractalNoise" baseFrequency="0.001" numOctaves="2" data-filterId="3">
-      //     <animate attributeName="baseFrequency" values="0.01; 0.015; 0.02; 0.025; 0.03; 0.025; 0.02; 0.015" repeatCount="indefinite" dur="0.25s"/>
-      //   </feTurbulence>
-      //   <feDisplacementMap xChannelSelector="R" yChannelSelector="G" in="SourceGraphic" scale="25" />
-      // </filter>
-      function showTitleOnHover() {
-        var i = 4;
-        while (i-- > 0) {
-        }
+    // <filter id="turbulence-1">
+    //   <feTurbulence type="fractalNoise" baseFrequency="0.001" numOctaves="2" data-filterId="3">
+    //     <animate attributeName="baseFrequency" values="0.01; 0.015; 0.02; 0.025; 0.03; 0.025; 0.02; 0.015" repeatCount="indefinite" dur="0.25s"/>
+    //   </feTurbulence>
+    //   <feDisplacementMap xChannelSelector="R" yChannelSelector="G" in="SourceGraphic" scale="25" />
+    // </filter>
+    function showTitleOnHover() {
+      var i = 4;
+      while (i-- > 0) {
       }
-      showTitleOnHover()
+    }
+    showTitleOnHover()
 
-      function loadSvg(destinationContainerElement, assetName) {
-        fetch('../assets/' + assetName)
-          .then(res => res.text())
-          .then(text => destinationContainerElement.innerHTML = text)
-      }
+    function loadSvg(destinationContainerElement, assetName) {
+      fetch('../assets/' + assetName)
+        .then(res => res.text())
+        .then(text => destinationContainerElement.innerHTML = text)
+    }
 
-      function htmlCollectionIterator(collection, cb) {
-        var i = collection.length
-        while (i-- > 0) { cb(collection[i], i) }
-      }
+    function htmlCollectionIterator(collection, cb) {
+      var i = collection.length
+      while (i-- > 0) { cb(collection[i], i) }
+    }
 
-      function loadAllSvgs() {
-        var loadableSvgContainers = document.getElementsByClassName('loadable-svg-container')
-        var promises = [];
-        htmlCollectionIterator(loadableSvgContainers, function (element) {
-          var assetName = element.dataset.svgAssetName
-          promises.push(loadSvg(element, assetName))
-        })
-        return Promise.all(promises)
-      }
+    function loadAllSvgs() {
+      var loadableSvgContainers = document.getElementsByClassName('loadable-svg-container')
+      var promises = [];
+      htmlCollectionIterator(loadableSvgContainers, function (element) {
+        var assetName = element.dataset.svgAssetName
+        promises.push(loadSvg(element, assetName))
+      })
+      return Promise.all(promises)
+    }
 
-      function makeItWiggle() {
-        var wigglers = document.querySelector('.lines svg')
-        htmlCollectionIterator(wigglers, function (element) {
-        })
-      }
-      loadAllSvgs()
+    function makeItWiggle() {
+      var wigglers = document.querySelector('.lines svg')
+      htmlCollectionIterator(wigglers, function (element) {
+      })
+    }
+    loadAllSvgs()
         // .then(makeItWiggle)
-    </script>
+  </script>
 </body>
 
 </html>
