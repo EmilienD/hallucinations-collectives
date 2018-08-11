@@ -1,0 +1,47 @@
+{
+  "js": {
+    "eol": "\n",
+    "end_with_newline": true,
+    "indent_size": 2,
+    "indent_with_tabs": false,
+    "brace_style": "end-expand,preserve-inline",
+    "wrap_line_length": 0,
+    "extra_liners": [],
+    "indent_body_inner_html": true,
+    "indent_head_inner_html": true,
+    "indent_inner_html": false,
+    "preserve_newlines": true,
+    "max_preserve_newlines": 10,
+    "space_after_anon_function": false
+  },
+  "html": {
+    "eol": "\n",
+    "end_with_newline": true,
+    "indent_size": 2,
+    "indent_with_tabs": false,
+    "brace_style": "end-expand,preserve-inline",
+    "wrap_line_length": 0,
+    "extra_liners": [],
+    "indent_body_inner_html": true,
+    "indent_head_inner_html": true,
+    "indent_inner_html": false,
+    "preserve_newlines": true,
+    "max_preserve_newlines": 10,
+    "space_after_anon_function": false
+  },
+  "css": {
+    "eol": "\n",
+    "end_with_newline": true,
+    "indent_size": 2,
+    "indent_with_tabs": false,
+    "brace_style": "end-expand,preserve-inline",
+    "wrap_line_length": 0,
+    "extra_liners": [],
+    "indent_body_inner_html": true,
+    "indent_head_inner_html": true,
+    "indent_inner_html": false,
+    "preserve_newlines": true,
+    "max_preserve_newlines": 10,
+    "space_after_anon_function": false
+  }
+}
