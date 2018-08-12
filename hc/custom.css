@@ -1,0 +1,99 @@
+* {
+  box-sizing: border-box;
+}
+
+html {
+  height: 100%;
+}
+
+section {
+  width: 0;
+  overflow: hidden;
+  padding: 0;
+  margin: 0;
+  transition: width 0.5s ease-in-out;
+  display: none;
+}
+
+section.active {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  transition: width 0.5s ease-in-out;
+}
+
+/* HOME */
+
+body {
+  background: url("assets/bg.png") no-repeat center center fixed;
+  background-color: #FFDBD1;
+  background-size: cover;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+#menu-container {
+  /*padding: 5%;*/
+  align-items: center;
+  justify-content: center;
+  object-fit: contain;
+  position: relative;
+}
+
+.layer {
+  display: flex;
+  position: absolute;
+  object-fit: contain;
+  max-width: 90vw;
+  max-height: 90vh;
+  height: 90%;
+  width: 90%;
+}
+
+.rotating-logo {
+  animation: rotation 30s infinite linear;
+}
+
+#homeLogo {
+  max-width: 33vw;
+  max-height: 33vh;
+}
+
+.title {
+  display: flex;
+  justify-content: flex-start;
+  height: 100%;
+}
+
+.title svg {
+  position: relative;
+}
+
+.title.left svg {
+  left: 120px;
+}
+
+.title.right svg {
+  right: 120px;
+}
+
+svg {
+  width: 100%;
+  height: 100%;
+}
+
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+}
+
+/* blog */
+
+#blog {
+  background-color: green;
+}
