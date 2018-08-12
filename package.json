@@ -1,0 +1,22 @@
+{
+  "name": "hallucinations-collectives",
+  "version": "1.0.0",
+  "description": "Site web des hallus",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EmilienD/hallucinations-collectives.git"
+  },
+  "author": "Emilien Durieu",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/EmilienD/hallucinations-collectives/issues"
+  },
+  "homepage": "https://github.com/EmilienD/hallucinations-collectives#readme",
+  "devDependencies": {
+    "eslint": "^5.3.0"
+  }
+}
