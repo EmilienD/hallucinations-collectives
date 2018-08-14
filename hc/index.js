@@ -49,7 +49,7 @@ function makeItWiggle() {
 loadAllSvgs()
   .then(makeItWiggle)
 
-var sections = document.getElementByTagName('section')
+var sections = document.getElementsByTagName('section')
 htmlCollectionIterator(sections, function(element) {
   element.addEventListener('transitionend', function() {
     element.className = element.className.match('active') ? 'hidden' : 'active'

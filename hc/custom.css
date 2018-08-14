@@ -2,6 +2,11 @@
   box-sizing: border-box;
 }
 
+@font-face {
+  font-family: "garage-gothic";
+  src: url("assets/GarageGothic-Regular.otf");
+}
+
 html {
   height: 100%;
 }
@@ -23,6 +28,10 @@ section.active {
 }
 
 /* HOME */
+
+#homeLogo path {
+  fill: #fff;
+}
 
 body {
   background: url("assets/bg.png") no-repeat center center fixed;
@@ -92,8 +101,70 @@ svg {
   }
 }
 
+@keyframes oscillation {
+  0% {
+    top: 5%;
+  }
+  100% {
+    top: -5%;
+  }
+}
+
 /* blog */
 
-#blog {
-  background-color: green;
+.frame {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  font-size: 12px;
+  margin: 0 auto;
+  padding: 3em 0;
+}
+
+.top-line {
+  display: flex;
+}
+
+.top-line .rotating-logo {
+  width: 30em;
+  height: 30em;
+}
+
+#mainLayoutLogo path {
+  fill: #7D2D22;
+}
+
+.flag {
+  animation: oscill 1s ease-in-out infinite alternate;
+  height: 20em;
+}
+
+nav>ul {
+  list-style-type: none;
+  display: flex;
+  text-transform: uppercase;
+  font-family: 'garage-gothic', sans-serif;
+  color: white;
+  font-size: 5em;
+}
+
+nav>ul li {
+  padding-left: 1em;
+}
+
+nav>ul li:last-child {
+  color: black;
+}
+
+.raining-lane {
+  width: 30em;
+}
+
+.raining-lane>div {
+  width: 20%;
+  margin: 0 auto;
+}
+
+.raining-lane path {
+  fill: #7D2D22;
 }
