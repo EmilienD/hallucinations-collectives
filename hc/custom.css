@@ -101,70 +101,127 @@ svg {
   }
 }
 
-@keyframes oscillation {
-  0% {
-    top: 5%;
+@keyframes rain {
+  from {
+    bottom: 0;
+    top: -15em;
   }
-  100% {
-    top: -5%;
+
+  to {
+    top: 0;
+    bottom: -15em;
   }
 }
 
-/* blog */
+/* layout */
 
 .frame {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: flex-start;
   font-size: 12px;
   margin: 0 auto;
-  padding: 3em 0;
+  padding: 3% 3% 0 3%;
 }
 
-.top-line {
-  display: flex;
+.frame>div {
+  height: 100%;
+  position: relative;
 }
 
-.top-line .rotating-logo {
-  width: 30em;
-  height: 30em;
+.column-left {
+  width: 20%;
+}
+
+.column-right {
+  width: 80%;
+}
+
+@media screen and (max-width: 500px) {
+  .column-left {
+    display: none;
+  }
+
+  .column-right {
+    width: 100%;
+  }
+}
+
+#mainLayoutLogo {
+  width: 100%;
+  max-height: 30em;
 }
 
 #mainLayoutLogo path {
   fill: #7D2D22;
 }
 
-.flag {
-  animation: oscill 1s ease-in-out infinite alternate;
-  height: 20em;
-}
-
-nav>ul {
-  list-style-type: none;
-  display: flex;
-  text-transform: uppercase;
-  font-family: 'garage-gothic', sans-serif;
-  color: white;
-  font-size: 5em;
-}
-
-nav>ul li {
-  padding-left: 1em;
-}
-
-nav>ul li:last-child {
-  color: black;
-}
-
 .raining-lane {
-  width: 30em;
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  height: 100%;
+}
+
+.raining-lane svg {
+  height: 15em;
 }
 
 .raining-lane>div {
-  width: 20%;
   margin: 0 auto;
+  height: 100%;
+  animation: 3s infinite normal rain;
+  animation-timing-function: linear;
+  position: relative;
 }
 
 .raining-lane path {
   fill: #7D2D22;
+}
+
+.top-line {
+  display: flex;
+  flex-direction: column;
+}
+
+/* navigation */
+
+nav>ul {
+  width: 100%;
+  list-style-type: none;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  text-transform: uppercase;
+  font-family: 'garage-gothic', sans-serif;
+  color: white;
+  font-size: 5em;
+  padding: 0;
+  margin: 0;
+}
+
+nav>ul li {
+  padding: 10px;
+  cursor: pointer;
+}
+
+nav>ul li:last-child {
+  color: #224B56;
+}
+
+/* blog */
+
+.active.content {
+  display: flex;
+  flex-direction: column;
+  font-family: 'Courier New', Courier, monospace;
+  width: 100%;
+  background-color: #fff;
+  border-radius: 3em;
+  padding: 2em;
+  color: #224B56;
+}
+
+.content h2 {
+  color: #7D2D22;
 }

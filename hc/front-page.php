@@ -18,28 +18,44 @@
     <div class="layer loadable-svg-container" id="brainLines" data-svg-asset-name="<?php echo get_bloginfo('template_directory'); ?>/assets/brainlines.svg"></div>
     <div class="right title"></div>
   </section>
-  <section id="blog" class="active">
+  <div>
     <div class="frame">
-      <div class="top-line">
+      <div class="column-left">
         <div class="rotating-logo loadable-svg-container" id="mainLayoutLogo" data-svg-asset-name="<?php echo get_bloginfo('template_directory'); ?>/assets/logoblog.svg"></div>
-        <div>
-          <div class="loadable-svg-container flag" data-svg-asset-name="<?php echo get_bloginfo('template_directory'); ?>/assets/drapeauwebzine.svg"></div>
-          <nav>
-            <ul>
-              <li>podcasts</li>
-              <li>reviews</li>
-              <li>articles</li>
-              <li>blogs</li>
-              <li>festival</li>
-            </ul>
-          </nav>
+        <div class="raining-lane">
+          <div class="raindrop-container">
+            <div class="loadable-svg-container" data-svg-asset-name="<?php echo get_bloginfo('template_directory'); ?>/assets/goutte.svg"></div>
+            <div class="loadable-svg-container" data-svg-asset-name="<?php echo get_bloginfo('template_directory'); ?>/assets/goutte.svg"></div>
+            <div class="loadable-svg-container" data-svg-asset-name="<?php echo get_bloginfo('template_directory'); ?>/assets/goutte.svg"></div>
+            <div class="loadable-svg-container" data-svg-asset-name="<?php echo get_bloginfo('template_directory'); ?>/assets/goutte.svg"></div>
+            <div class="loadable-svg-container" data-svg-asset-name="<?php echo get_bloginfo('template_directory'); ?>/assets/goutte.svg"></div>
+            <div class="loadable-svg-container" data-svg-asset-name="<?php echo get_bloginfo('template_directory'); ?>/assets/goutte.svg"></div>
+          </div>
         </div>
       </div>
-      <div class="raining-lane">
-        <div class="loadable-svg-container" data-svg-asset-name="<?php echo get_bloginfo('template_directory'); ?>/assets/goutte.svg"></div>
+      <div class="column-right">
+        <div class="top-line">
+          <div>
+            <div class="loadable-svg-container flag" data-svg-asset-name="<?php echo get_bloginfo('template_directory'); ?>/assets/drapeauwebzine.svg"></div>
+            <nav>
+              <ul>
+                <li><a class="nav-buttons" data-section-id="podcasts">podcasts</a></li>
+                <li><a class="nav-buttons" data-section-id="reviews">reviews</a></li>
+                <li><a class="nav-buttons" data-section-id="articles">articles</a></li>
+                <li><a class="nav-buttons" data-section-id="blogs">blogs</a></li>
+                <li><a class="nav-buttons" data-section-id="festival">festival</a></li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+        <section class="content" id="podcasts"></section>
+        <section class="content" id="reviews"></section>
+        <section class="content" id="articles"></section>
+        <section class="content" id="blogs"></section>
+        <section class="content" id="festival"></section>
       </div>
     </div>
-  </section>
+  </div>
   <script type="text/javascript" src="<?php echo get_bloginfo('template_directory'); ?>/index.js"></script>
 </body>
 </html>

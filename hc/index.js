@@ -1,4 +1,9 @@
+/*
+- Add proper history management
+*/
+
 function activateSection(id) {
+  history.pushState(null, '', location.origin + '/wordpress/' + id)
   htmlCollectionIterator(document.getElementsByClassName('active'), function(e) {
     e.className = e.className.split('active').join('').trim()
   })
@@ -6,8 +11,14 @@ function activateSection(id) {
   element.className = element.className + ' active'
 }
 
-document.getElementById('blog').addEventListener('click', activateSection.bind(null, 'menu-container'))
-document.getElementById('menu-container').addEventListener('click', activateSection.bind(null, 'blog'))
+/* Add nav events */
+htmlCollectionIterator(document.getElementsByClassName('nav-buttons'), function(e) {
+  e.addEventListener('click', function(event) {
+    event.prevent
+    activateSection(e.dataset.sectionId)
+  })
+
+})
 
 function loadSvg(destinationContainerElement, assetName) {
   return fetch(assetName)
@@ -55,3 +66,11 @@ htmlCollectionIterator(sections, function(element) {
     element.className = element.className.match('active') ? 'hidden' : 'active'
   }, false)
 })
+
+fetch('index.php/wp-json/wp/v2/posts')
+  .then(function(res) { res.json() })
+  .then(function(res) {
+    console.log(res)
+    var content = res.reduce(function(acc, article) { return acc + '<h2>' + article.title.rendered + '</h2>' + article.content.rendered }, '')
+    document.getElementById('blogs').innerHTML = content
+  })
