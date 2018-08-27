@@ -16,7 +16,7 @@
     <div class="layer loadable-svg-container" id="brainLines" data-svg-asset-name="<?php echo get_bloginfo('template_directory'); ?>/assets/brainlines.svg"></div>
     <div class="right title"></div>
   </div>
-  <div class="page active" id="main">
+  <div class="page" id="main">
     <div class="frame">
       <div class="column-left">
         <div class="rotating-logo loadable-svg-container" id="mainLayoutLogo" data-svg-asset-name="<?php echo get_bloginfo('template_directory'); ?>/assets/logoblog.svg"></div>
@@ -49,13 +49,19 @@
         <section class="content" id="podcasts">podcasts</section>
         <section class="content" id="reviews">reviews</section>
         <section class="content" id="articles">articles</section>
-        <section class="content" id="blogs">blogs</section>
+        <section class="content" id="blogs"></section>
         <section class="content" id="festival">festival</section>
       </div>
     </div>
   </div>
+  <div class="page" id="post">
+    <div id="postInnerContainer"></div>
+  </div>
   <div class="page" id="fourZeroFour">
-    <h1><a href="">Nothing to see here, click me to come back.</a></h1>
+    <h1>
+      <a href="/wordpress">Nothing to see here, click me to go to the home page.</a>
+      <a href="/wordpress" id="fourZeroFourBackLink">Or here to go back.</a>
+    </h1>
   </div>
   <script type="text/javascript" src="<?php echo get_bloginfo('template_directory'); ?>/index.js"></script>
 </body>

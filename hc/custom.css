@@ -9,6 +9,13 @@
 
 html {
   height: 100%;
+  font-size: 16px;
+}
+
+@media screen and (max-width: 400px) {
+  html {
+    font-size: 12px;
+  }
 }
 
 .page {
@@ -226,19 +233,44 @@ nav>ul li:last-child {
 
 /* blog */
 
-.content.active {
+ol.post-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+a.post-link {
+  text-decoration: inherit;
+  color: inherit;
+  outline: none;
+}
+
+.content.active,
+#postInnerContainer {
   display: flex;
   flex-direction: column;
   font-family: 'Courier New', Courier, monospace;
   width: 100%;
-  background-color: #fff;
-  border-radius: 3em;
-  padding: 2em;
+  background-color: #FFFFFF;
+  border-radius: 3rem;
+  padding: 1rem;
   color: #224B56;
 }
 
 .content h2 {
   color: #7D2D22;
+}
+
+/* post */
+
+#post {
+  padding: 1rem;
+}
+
+#postInnerContainer h1 {
+  color: #7D2D22;
+  width: 100%;
+  text-align: center;
 }
 
 
