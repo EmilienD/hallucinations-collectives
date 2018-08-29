@@ -7,6 +7,38 @@
   src: url("assets/GarageGothic-Regular.otf");
 }
 
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(359deg);
+  }
+}
+
+@keyframes rain {
+  from {
+    bottom: 0;
+    top: -15em;
+  }
+
+  to {
+    top: 0;
+    bottom: -15em;
+  }
+}
+
+@keyframes radiating {
+  from {
+    height: 0;
+  }
+
+  to {
+    height: 500vh;
+  }
+}
+
 html {
   height: 100%;
   font-size: 16px;
@@ -54,13 +86,7 @@ section.active {
 .radiation {
   position: relative;
   height: 100vh;
-  /* visibility: hidden; */
-}
-
-.radiation.visible {
-  height: 500vh;
-  visibility: visible;
-  transition: height 5s linear;
+  animation: radiating 5s infinite linear;
 }
 
 #homeLogo path {
@@ -127,28 +153,6 @@ body {
 
 svg {
   height: 100%;
-}
-
-@keyframes rotation {
-  from {
-    transform: rotate(0deg);
-  }
-
-  to {
-    transform: rotate(359deg);
-  }
-}
-
-@keyframes rain {
-  from {
-    bottom: 0;
-    top: -15em;
-  }
-
-  to {
-    top: 0;
-    bottom: -15em;
-  }
 }
 
 /* layout */
