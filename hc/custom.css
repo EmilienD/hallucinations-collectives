@@ -157,6 +157,11 @@ svg {
 
 /* layout */
 
+.raindrop-container>div {
+  display: flex;
+  justify-content: center;
+}
+
 .frame {
   display: flex;
   flex-direction: row;
