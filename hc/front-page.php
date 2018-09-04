@@ -17,9 +17,13 @@
     </div>
     <div class="layer loadable-svg-container" id="brain" data-svg-asset-name="<?php echo get_bloginfo('template_directory'); ?>/assets/brain.svg"></div>
     <div class="rotating-logo layer loadable-svg-container" id="homeLogo" data-svg-asset-name="<?php echo get_bloginfo('template_directory'); ?>/assets/logo.svg"></div>
-    <div class="layer brain-lines">
+    <div class="layer-group brain-lines">
       <div class="loadable-svg-container wiggle" id="magazineLines" data-svg-asset-name="<?php echo get_bloginfo('template_directory'); ?>/assets/MagazineLines.svg"></div>
       <div class="loadable-svg-container wiggle" id="festivalLines" data-svg-asset-name="<?php echo get_bloginfo('template_directory'); ?>/assets/FestivalLines.svg"></div>
+    </div>
+    <div class="layer-group">
+      <div class="loadable-svg-container visible-on-hover" data-svg-asset-name="<?php echo get_bloginfo('template_directory'); ?>/assets/boutonsmagazine.svg"></div>
+      <!-- <div class="loadable-svg-container visible-on-hover" data-svg-asset-name="<?php echo get_bloginfo('template_directory'); ?>/assets/boutonsmagazine.svg"></div> -->
     </div>
   </div>
   <div class="page" id="main">

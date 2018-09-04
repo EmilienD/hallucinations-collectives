@@ -133,7 +133,8 @@ body {
   position: relative;
 }
 
-.layer {
+.layer,
+.layer-group {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -145,7 +146,7 @@ body {
   width: 90%;
 }
 
-.brain-lines>div {
+.layer-group>div {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -155,12 +156,20 @@ body {
   height: 100%;
 }
 
+.visible-on-hover>svg:first-child {
+  visibility: hidden;
+}
+
+.visible-on-hover:hover>svg:first-child {
+  visibility: visible;
+}
+
 @media (orientation:portrait) {
-  .brain-lines>div {
+  .layer-group>div {
     max-width: 45vw;
   }
 
-  .brain-lines>div svg {
+  .layer-group>div svg {
     width: 90%;
   }
 }
