@@ -23,7 +23,7 @@
     </div>
     <div class="layer-group">
       <div class="loadable-svg-container visible-on-hover" data-svg-asset-name="<?php echo get_bloginfo('template_directory'); ?>/assets/boutonsmagazine.svg"></div>
-      <!-- <div class="loadable-svg-container visible-on-hover" data-svg-asset-name="<?php echo get_bloginfo('template_directory'); ?>/assets/boutonsmagazine.svg"></div> -->
+      <div class="loadable-svg-container visible-on-hover" data-svg-asset-name="<?php echo get_bloginfo('template_directory'); ?>/assets/festivalboutons.svg"></div>
     </div>
   </div>
   <div class="page" id="main">

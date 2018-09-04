@@ -31,13 +31,13 @@
 
 @keyframes radiating {
   from {
-    height: 0;
-    width: 0;
+    height: 200vh;
+    width: 200vw;
   }
 
   to {
-    height: 350%;
-    width: 350%;
+    height: 300vh;
+    width: 300vw;
   }
 }
 
@@ -109,7 +109,7 @@ section.active {
   align-items: center;
   position: relative;
   height: 100%;
-  animation: radiating 2s infinite linear;
+  animation: radiating 2s infinite ease-in;
 }
 
 #homeLogo path {
@@ -156,11 +156,11 @@ body {
   height: 100%;
 }
 
-.visible-on-hover>svg:first-child {
+.visible-on-hover svg {
   visibility: hidden;
 }
 
-.visible-on-hover:hover>svg:first-child {
+.visible-on-hover:hover svg {
   visibility: visible;
 }
 
