@@ -1,10 +1,10 @@
 // consts
-
-var pages = {
+var pagesId = {
   MAIN: 'main',
   HOME: 'home',
   POST: 'post',
   DEFAULT: 'home',
+  FOUR_ZERO_FOUR: 'fourZeroFour',
 }
 
 // state management
@@ -16,7 +16,6 @@ function updateState(newState, replace) {
   showState(newState)
   if (JSON.stringify(newState) === JSON.stringify(history.state)) { return }
   var url = location.origin + makePath(
-    'wordpress',
     newState.page,
     newState.section,
     newState.post && newState.post.slug
@@ -25,9 +24,25 @@ function updateState(newState, replace) {
 }
 
 function showState(state) {
-  showPage(state.page)
-  activateSection(state.section)
-  displayPost(state.post)
+  pageSwitch[state.page](state)
+}
+
+var pageSwitch = {
+  main: function(state) {
+    showPage(pagesId.MAIN)
+    activateSection(state.section)
+  },
+  home: function(state) {
+    showPage(pagesId.HOME)
+  },
+  post: function(state) {
+    showPage(pagesId.POST)
+    displayPost(state.post)
+  },
+  home: function(state) {
+    showPage(pagesId.HOME)
+
+  },
 }
 
 function makePath() {
@@ -42,10 +57,11 @@ function makePath() {
 }
 
 function applyUrlToState() {
-  var pathItems = location.pathname.split('/').filter(function(s) { return s !== 'wordpress' && s })
-  var page = pathItems.shift() || pages.DEFAULT
+  var pathItems = location.pathname.split('/').filter(function(s) { return s })
+  console.log(pathItems)
+  var page = pathItems.shift() || pagesId.DEFAULT
   var lastItem = pathItems.shift()
-  if (page === pages.POST) {
+  if (page === pagesId.POST) {
     console.log(lastItem)
     fetchPosts('slug=' + lastItem)
       .then(function(res) { return res.json() })
@@ -77,7 +93,11 @@ function activateSection(id) {
   if (id) {
     var element = document.getElementById(id)
     if (element) { element.className = element.className + ' active' }
-    else { showPage() }
+    else {
+      updateState({
+        page: pages.FOUR_ZERO_FOUR,
+      }, true)
+    }
   }
 }
 
@@ -121,10 +141,10 @@ function loadAllSvgs() {
 var filter = document.createElementNS('http://www.w3.org/2000/svg', 'filter')
 filter.id = 'turbulence-1'
 filter.innerHTML = '\
-<feTurbulence type="fractalNoise" baseFrequency="0.01" numOctaves="2" data-filterId="3">\
-<animate attributeName="baseFrequency" values="0.01; 0.015; 0.02; 0.025; 0.03; 0.025; 0.02; 0.015" repeatCount="indefinite" dur="0.25s"/>\
+<feTurbulence type="fractalNoise" baseFrequency="0.5" numOctaves="1" data-filterId="3">\
+<animate attributeName="baseFrequency" values="0.01; 0.015; 0.02; 0.025; 0.03; 0.025; 0.02; 0.015" repeatCount="indefinite" dur="1s"/>\
 </feTurbulence>\
-<feDisplacementMap xChannelSelector="R" yChannelSelector="G" in="SourceGraphic" scale="25" />\
+<feDisplacementMap xChannelSelector="R" yChannelSelector="G" in="SourceGraphic" scale="10" />\
 '
 
 function makeItWiggle() {
@@ -138,7 +158,7 @@ function makeItWiggle() {
   })
 }
 loadAllSvgs()
-// .then(makeItWiggle)
+  .then(makeItWiggle)
 
 var sections = document.getElementsByTagName('section')
 htmlCollectionIterator(sections, function(element) {
@@ -160,10 +180,10 @@ fetchPosts('page=1&categories=1')
 
 /* Add event listeners */
 htmlCollectionIterator(document.getElementsByClassName('nav-buttons'), function(e) {
-  e.addEventListener('click', updateState.bind(null, { page: pages.MAIN, section: e.dataset.sectionId }, false))
+  e.addEventListener('click', updateState.bind(null, { page: pagesId.MAIN, section: e.dataset.sectionId }, false))
 })
-mainLayoutLogo.addEventListener('click', function() { updateState({ page: pages.HOME }) }) // eslint-disable-line no-undef
-home.addEventListener('click', function() { updateState({ page: pages.MAIN }) }) // eslint-disable-line no-undef
+mainLayoutLogo.addEventListener('click', function() { updateState({ page: pagesId.HOME }) }) // eslint-disable-line no-undef
+home.addEventListener('click', function() { updateState({ page: pagesId.MAIN }) }) // eslint-disable-line no-undef
 fourZeroFourBackLink.addEventListener('click', function(event) {
   event.preventDefault()
   history.back()
@@ -188,7 +208,7 @@ function createPostListElement(post) {
   li.appendChild(a)
   a.className = 'post-link'
   a.addEventListener('click', function(event) {
-    updateState({ page: pages.POST, post: post })
+    updateState({ page: pagesId.POST, post: post })
     event.preventDefault()
   })
   a.href = location.origin + '/posts/' + post.slug
@@ -197,7 +217,7 @@ function createPostListElement(post) {
 }
 
 function fetchPosts(queryString) {
-  return fetch(location.origin + '/wordpress/wp-json/wp/v2/posts' +
+  return fetch(location.origin + '/wp-json/wp/v2/posts' +
     ('?' + queryString || '')
   )
 }

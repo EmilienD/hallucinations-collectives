@@ -32,10 +32,12 @@
 @keyframes radiating {
   from {
     height: 0;
+    width: 0;
   }
 
   to {
-    height: 500vh;
+    height: 350%;
+    width: 350%;
   }
 }
 
@@ -83,10 +85,31 @@ section.active {
 
 /* HOME */
 
-.radiation {
+.radiation-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
   position: relative;
-  height: 100vh;
-  animation: radiating 5s infinite linear;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.radiation {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  height: 100%;
+  animation: radiating 2s infinite linear;
 }
 
 #homeLogo path {

@@ -5,13 +5,16 @@
   <title>Hallucinations Collectives</title>
   <link href="<?php echo get_bloginfo('template_directory'); ?>/custom.css" rel="stylesheet">
   <link rel="shortcut icon" href="<?php echo get_bloginfo('template_directory'); ?>/assets/favicon.png" type="image/x-icon">
-  <script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.min.js"></script>
+  <!-- UNCOMMENT FOR PROD -->
+  <!-- <script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.auto.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/fetch/2.0.4/fetch.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fetch/2.0.4/fetch.min.js"></script> -->
 </head>
 <body>
   <div class="page" id="home">
-    <div class="loadable-svg-container radiation wiggle" data-svg-asset-name="<?php echo get_bloginfo('template_directory'); ?>/assets/radiations.svg"></div>
+    <div class="radiation-container">
+      <div class="loadable-svg-container radiation" data-svg-asset-name="<?php echo get_bloginfo('template_directory'); ?>/assets/radiations.svg"></div>
+    </div>
     <div class="layer loadable-svg-container" id="brain" data-svg-asset-name="<?php echo get_bloginfo('template_directory'); ?>/assets/brain.svg"></div>
     <div class="rotating-logo layer loadable-svg-container" id="homeLogo" data-svg-asset-name="<?php echo get_bloginfo('template_directory'); ?>/assets/logo.svg"></div>
     <div class="layer brain-lines">
@@ -62,8 +65,8 @@
   </div>
   <div class="page" id="fourZeroFour">
     <h1>
-      <a href="/wordpress">Nothing to see here, click me to go to the home page.</a>
-      <a href="/wordpress" id="fourZeroFourBackLink">Or here to go back.</a>
+      <a href="/">Nothing to see here, click me to go to the home page.</a>
+      <a href="/" id="fourZeroFourBackLink">Or here to go back.</a>
     </h1>
   </div>
   <script type="text/javascript" src="<?php echo get_bloginfo('template_directory'); ?>/index.js"></script>
