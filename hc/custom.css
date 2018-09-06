@@ -29,15 +29,23 @@
   }
 }
 
-@keyframes radiating {
+@keyframes radiating-portrait {
   from {
-    height: 200vh;
-    width: 200vw;
+    height: 100vh;
   }
 
   to {
-    height: 300vh;
-    width: 300vw;
+    height: 290vh;
+  }
+}
+
+@keyframes radiating-landscape {
+  from {
+    width: 100vw;
+  }
+
+  to {
+    width: 200vw;
   }
 }
 
@@ -108,8 +116,19 @@ section.active {
   justify-content: center;
   align-items: center;
   position: relative;
-  height: 100%;
-  animation: radiating 2s infinite ease-in;
+}
+
+@media (orientation:portrait) {
+  .radiation {
+    animation: radiating-portrait 1s infinite linear;
+  }
+}
+
+@media (orientation:landscape) {
+  .radiation {
+    width: 100vw;
+    animation: radiating-landscape 1s infinite linear;
+  }
 }
 
 #homeLogo path {
@@ -162,6 +181,11 @@ body {
 
 .visible-on-hover:hover svg {
   visibility: visible;
+}
+
+#homeMenuZine:hover g,
+#homeMenuFest:hover g {
+  cursor: pointer;
 }
 
 @media (orientation:portrait) {

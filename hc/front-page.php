@@ -22,8 +22,8 @@
       <div class="loadable-svg-container wiggle" id="festivalLines" data-svg-asset-name="<?php echo get_bloginfo('template_directory'); ?>/assets/FestivalLines.svg"></div>
     </div>
     <div class="layer-group">
-      <div class="loadable-svg-container visible-on-hover" data-svg-asset-name="<?php echo get_bloginfo('template_directory'); ?>/assets/boutonsmagazine.svg"></div>
-      <div class="loadable-svg-container visible-on-hover" data-svg-asset-name="<?php echo get_bloginfo('template_directory'); ?>/assets/festivalboutons.svg"></div>
+      <div id="homeMenuZine" class="loadable-svg-container visible-on-hover" data-svg-asset-name="<?php echo get_bloginfo('template_directory'); ?>/assets/boutonsmagazine.svg"></div>
+      <div id="homeMenuFest" class="loadable-svg-container visible-on-hover" data-svg-asset-name="<?php echo get_bloginfo('template_directory'); ?>/assets/festivalboutons.svg"></div>
     </div>
   </div>
   <div class="page" id="main">
@@ -47,19 +47,22 @@
             <div class="loadable-svg-container flag" data-svg-asset-name="<?php echo get_bloginfo('template_directory'); ?>/assets/drapeauwebzine.svg"></div>
             <nav>
               <ul>
-                <li><a class="nav-buttons" data-section-id="podcasts">podcasts</a></li>
-                <li><a class="nav-buttons" data-section-id="reviews">reviews</a></li>
                 <li><a class="nav-buttons" data-section-id="articles">articles</a></li>
-                <li><a class="nav-buttons" data-section-id="blogs">blogs</a></li>
+                <li><a class="nav-buttons" data-section-id="interviews">entrevues</a></li>
+                <li><a class="nav-buttons" data-section-id="podcasts">podcasts</a></li>
+                <li><a class="nav-buttons" data-section-id="lists">listes</a></li>
+                <li><a class="nav-buttons" data-section-id="playlists">playlists</a></li>
                 <li><a class="nav-buttons" data-section-id="festival">festival</a></li>
               </ul>
             </nav>
           </div>
         </div>
+        <section class="content" id="articles"></section>
+        <section class="content" id="interviews">entrevues</section>
         <section class="content" id="podcasts">podcasts</section>
-        <section class="content" id="reviews">reviews</section>
-        <section class="content" id="articles">articles</section>
-        <section class="content" id="blogs"></section>
+        <section class="content" id="lists">listes</section>
+        <section class="content" id="playlists">playlists</section>
+        <section class="content" id="zineinfos">infos magazine</section>
         <section class="content" id="festival">festival</section>
       </div>
     </div>

@@ -24,7 +24,7 @@ function updateState(newState, replace) {
 }
 
 function showState(state) {
-  pageSwitch[state.page](state)
+  (pageSwitch[state.page] || pageSwitch[pagesId.FOUR_ZERO_FOUR])(state)
 }
 
 var pageSwitch = {
@@ -41,8 +41,10 @@ var pageSwitch = {
   },
   home: function(state) {
     showPage(pagesId.HOME)
-
   },
+  fourZeroFour: function() {
+    showPage(pagesId.FOUR_ZERO_FOUR)
+  }
 }
 
 function makePath() {
@@ -58,11 +60,9 @@ function makePath() {
 
 function applyUrlToState() {
   var pathItems = location.pathname.split('/').filter(function(s) { return s })
-  console.log(pathItems)
   var page = pathItems.shift() || pagesId.DEFAULT
   var lastItem = pathItems.shift()
   if (page === pagesId.POST) {
-    console.log(lastItem)
     fetchPosts('slug=' + lastItem)
       .then(function(res) { return res.json() })
       .then(function(postList) {
@@ -95,7 +95,7 @@ function activateSection(id) {
     if (element) { element.className = element.className + ' active' }
     else {
       updateState({
-        page: pages.FOUR_ZERO_FOUR,
+        page: pagesId.FOUR_ZERO_FOUR,
       }, true)
     }
   }
@@ -158,6 +158,7 @@ function makeItWiggle() {
   })
 }
 loadAllSvgs()
+  .then(addActionsToHomeMenu)
   .then(makeItWiggle)
 
 var sections = document.getElementsByTagName('section')
@@ -174,7 +175,7 @@ fetchPosts('page=1&categories=1')
   })
   .then(function(res) {
     var list = createPostList(res)
-    document.getElementById('blogs').appendChild(list)
+    document.getElementById('articles').appendChild(list)
   })
   .catch((err) => console.log(err))
 
@@ -183,7 +184,6 @@ htmlCollectionIterator(document.getElementsByClassName('nav-buttons'), function(
   e.addEventListener('click', updateState.bind(null, { page: pagesId.MAIN, section: e.dataset.sectionId }, false))
 })
 mainLayoutLogo.addEventListener('click', function() { updateState({ page: pagesId.HOME }) }) // eslint-disable-line no-undef
-home.addEventListener('click', function() { updateState({ page: pagesId.MAIN }) }) // eslint-disable-line no-undef
 fourZeroFourBackLink.addEventListener('click', function(event) {
   event.preventDefault()
   history.back()
@@ -214,6 +214,17 @@ function createPostListElement(post) {
   a.href = location.origin + '/posts/' + post.slug
   a.innerHTML = '<h2>' + post.title.rendered + '</h2>' + post.excerpt.rendered
   return a
+}
+
+function addActionsToHomeMenu() {
+  const zine = ['articles', 'interviews', 'podcasts', 'lists', 'playlists', 'zineinfos']
+  const fest = ['presentation', 'programmation', 'tickets', 'festinfos', 'contact']
+  htmlCollectionIterator(homeMenuZine.firstChild.children, function(g, i) {
+    g.addEventListener('click', function() { updateState({ page: pagesId.MAIN, section: zine[i] }) })
+  })
+  htmlCollectionIterator(homeMenuFest.firstChild.children, function(g, i) {
+    g.addEventListener('click', function() { updateState({ page: pagesId.MAIN, section: fest[i] }) })
+  })
 }
 
 function fetchPosts(queryString) {
