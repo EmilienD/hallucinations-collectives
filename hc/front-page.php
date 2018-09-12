@@ -22,22 +22,30 @@
       <div class="loadable-svg-container wiggle" id="festivalLines" data-svg-asset-name="<?php echo get_bloginfo('template_directory'); ?>/assets/FestivalLines.svg"></div>
     </div>
     <div class="layer-group">
-      <div id="homeMenuZine" class="loadable-svg-container visible-on-hover" data-svg-asset-name="<?php echo get_bloginfo('template_directory'); ?>/assets/boutonsmagazine.svg"></div>
-      <div id="homeMenuFest" class="loadable-svg-container visible-on-hover" data-svg-asset-name="<?php echo get_bloginfo('template_directory'); ?>/assets/festivalboutons.svg"></div>
+      <div id="homeMenuZine" class="loadable-svg-container hidden" data-svg-asset-name="<?php echo get_bloginfo('template_directory'); ?>/assets/boutonsmagazine.svg"></div>
+      <div id="homeMenuFest" class="loadable-svg-container hidden" data-svg-asset-name="<?php echo get_bloginfo('template_directory'); ?>/assets/festivalboutons.svg"></div>
     </div>
   </div>
-  <div class="page" id="main">
+  <div class="page" id="zine">
     <div class="frame">
       <div class="column-left">
         <div class="rotating-logo loadable-svg-container" id="mainLayoutLogo" data-svg-asset-name="<?php echo get_bloginfo('template_directory'); ?>/assets/logoblog.svg"></div>
         <div class="raining-lane">
           <div class="raindrop-container">
-            <div class="loadable-svg-container" data-svg-asset-name="<?php echo get_bloginfo('template_directory'); ?>/assets/goutte.svg"></div>
-            <div class="loadable-svg-container" data-svg-asset-name="<?php echo get_bloginfo('template_directory'); ?>/assets/goutte.svg"></div>
-            <div class="loadable-svg-container" data-svg-asset-name="<?php echo get_bloginfo('template_directory'); ?>/assets/goutte.svg"></div>
-            <div class="loadable-svg-container" data-svg-asset-name="<?php echo get_bloginfo('template_directory'); ?>/assets/goutte.svg"></div>
-            <div class="loadable-svg-container" data-svg-asset-name="<?php echo get_bloginfo('template_directory'); ?>/assets/goutte.svg"></div>
-            <div class="loadable-svg-container" data-svg-asset-name="<?php echo get_bloginfo('template_directory'); ?>/assets/goutte.svg"></div>
+            <div class="loadable-svg-container" data-svg-asset-name="<?php echo get_bloginfo('template_directory'); ?>/assets/chaine.svg"></div>
+            <div class="loadable-svg-container" data-svg-asset-name="<?php echo get_bloginfo('template_directory'); ?>/assets/chaine.svg"></div>
+            <div class="loadable-svg-container" data-svg-asset-name="<?php echo get_bloginfo('template_directory'); ?>/assets/chaine.svg"></div>
+            <div class="loadable-svg-container" data-svg-asset-name="<?php echo get_bloginfo('template_directory'); ?>/assets/chaine.svg"></div>
+            <div class="loadable-svg-container" data-svg-asset-name="<?php echo get_bloginfo('template_directory'); ?>/assets/chaine.svg"></div>
+            <div class="loadable-svg-container" data-svg-asset-name="<?php echo get_bloginfo('template_directory'); ?>/assets/chaine.svg"></div>
+          </div>
+          <div class="raindrop-container">
+            <div class="loadable-svg-container" data-svg-asset-name="<?php echo get_bloginfo('template_directory'); ?>/assets/chaine.svg"></div>
+            <div class="loadable-svg-container" data-svg-asset-name="<?php echo get_bloginfo('template_directory'); ?>/assets/chaine.svg"></div>
+            <div class="loadable-svg-container" data-svg-asset-name="<?php echo get_bloginfo('template_directory'); ?>/assets/chaine.svg"></div>
+            <div class="loadable-svg-container" data-svg-asset-name="<?php echo get_bloginfo('template_directory'); ?>/assets/chaine.svg"></div>
+            <div class="loadable-svg-container" data-svg-asset-name="<?php echo get_bloginfo('template_directory'); ?>/assets/chaine.svg"></div>
+            <div class="loadable-svg-container" data-svg-asset-name="<?php echo get_bloginfo('template_directory'); ?>/assets/chaine.svg"></div>
           </div>
         </div>
       </div>
@@ -57,7 +65,10 @@
             </nav>
           </div>
         </div>
-        <section class="content" id="articles"></section>
+        <section class="content" id="articles">
+          <ul id="categorySelector">
+          </ul>
+        </section>
         <section class="content" id="interviews">entrevues</section>
         <section class="content" id="podcasts">podcasts</section>
         <section class="content" id="lists">listes</section>

@@ -1,6 +1,6 @@
 // consts
 var pagesId = {
-  MAIN: 'main',
+  ZINE: 'zine',
   HOME: 'home',
   POST: 'post',
   DEFAULT: 'home',
@@ -8,8 +8,10 @@ var pagesId = {
 }
 
 // state management
-window.onpopstate = function(event) {
-  showState(event.state)
+function State(firstState) {
+  this.state = firstState || {}
+  this.previousState = {}
+  this.listeners = []
 }
 
 function updateState(newState, replace) {
@@ -28,22 +30,19 @@ function showState(state) {
 }
 
 var pageSwitch = {
-  main: function(state) {
-    showPage(pagesId.MAIN)
+  zine: function(state) {
+    showPage(state.page)
     activateSection(state.section)
   },
   home: function(state) {
-    showPage(pagesId.HOME)
+    showPage(state.page)
   },
   post: function(state) {
-    showPage(pagesId.POST)
+    showPage(state.page)
     displayPost(state.post)
   },
-  home: function(state) {
-    showPage(pagesId.HOME)
-  },
-  fourZeroFour: function() {
-    showPage(pagesId.FOUR_ZERO_FOUR)
+  fourZeroFour: function(state) {
+    showPage(state.page)
   }
 }
 
@@ -64,7 +63,6 @@ function applyUrlToState() {
   var lastItem = pathItems.shift()
   if (page === pagesId.POST) {
     fetchPosts('slug=' + lastItem)
-      .then(function(res) { return res.json() })
       .then(function(postList) {
         var state = {
           page: page,
@@ -112,7 +110,7 @@ function showPage(id) {
 
 function displayPost(post) {
   if (!post) { return }
-  postInnerContainer.innerHTML =
+  postInnerContainer.innerHTML = // eslint-disable-line no-undef
     '<h1>' + post.title.rendered + '</h1>' +
     post.content.rendered
 }
@@ -170,21 +168,17 @@ htmlCollectionIterator(sections, function(element) {
 
 fetchPosts('page=1&categories=1')
   .then(function(res) {
-    console.log(res.headers.get('X-WP-TotalPages'))
-    return res.json()
-  })
-  .then(function(res) {
     var list = createPostList(res)
     document.getElementById('articles').appendChild(list)
   })
-  .catch((err) => console.log(err))
+  .catch(function(err) { console.log(err) })
 
 /* Add event listeners */
 htmlCollectionIterator(document.getElementsByClassName('nav-buttons'), function(e) {
-  e.addEventListener('click', updateState.bind(null, { page: pagesId.MAIN, section: e.dataset.sectionId }, false))
+  e.addEventListener('click', updateState.bind(null, { page: pagesId.ZINE, section: e.dataset.sectionId }, false))
 })
 mainLayoutLogo.addEventListener('click', function() { updateState({ page: pagesId.HOME }) }) // eslint-disable-line no-undef
-fourZeroFourBackLink.addEventListener('click', function(event) {
+fourZeroFourBackLink.addEventListener('click', function(event) { // eslint-disable-line no-undef
   event.preventDefault()
   history.back()
 })
@@ -217,18 +211,53 @@ function createPostListElement(post) {
 }
 
 function addActionsToHomeMenu() {
-  const zine = ['articles', 'interviews', 'podcasts', 'lists', 'playlists', 'zineinfos']
-  const fest = ['presentation', 'programmation', 'tickets', 'festinfos', 'contact']
-  htmlCollectionIterator(homeMenuZine.firstChild.children, function(g, i) {
-    g.addEventListener('click', function() { updateState({ page: pagesId.MAIN, section: zine[i] }) })
+  var zine = ['articles', 'interviews', 'podcasts', 'lists', 'playlists', 'zineinfos']
+  var fest = ['presentation', 'programmation', 'tickets', 'festinfos', 'contact']
+  htmlCollectionIterator(homeMenuZine.firstChild.children, function(g, i) { // eslint-disable-line no-undef
+    g.addEventListener('click', function() { updateState({ page: pagesId.ZINE, section: zine[i] }) })
   })
-  htmlCollectionIterator(homeMenuFest.firstChild.children, function(g, i) {
-    g.addEventListener('click', function() { updateState({ page: pagesId.MAIN, section: fest[i] }) })
+  htmlCollectionIterator(homeMenuFest.firstChild.children, function(g, i) { // eslint-disable-line no-undef
+    g.addEventListener('click', function() { updateState({ page: pagesId.ZINE, section: fest[i] }) })
   })
 }
 
 function fetchPosts(queryString) {
   return fetch(location.origin + '/wp-json/wp/v2/posts' +
-    ('?' + queryString || '')
+      (queryString ? '?' + queryString : '')
   )
+    .then(function(res) { return res.json() })
 }
+
+function hide(element) { element.className = element.className + ' hidden' }
+
+function unhide(element) { element.className = element.className.split('hidden').join('').trim() }
+
+function hideUnhide(hideElement, unhideElement) {
+  hide(hideElement)
+  unhide(unhideElement)
+}
+
+homeMenuZine.addEventListener('mouseenter', function(event) { hideUnhide(magazineLines, event.target) }) // eslint-disable-line no-undef
+homeMenuZine.addEventListener('mouseleave', function(event) { hideUnhide(event.target, magazineLines) }) // eslint-disable-line no-undef
+
+homeMenuFest.addEventListener('mouseenter', function(event) { hideUnhide(festivalLines, event.target) }) // eslint-disable-line no-undef
+homeMenuFest.addEventListener('mouseleave', function(event) { hideUnhide(event.target, festivalLines) }) // eslint-disable-line no-undef
+
+function fetchCategories() {
+  return fetch('/wp-json/wp/v2/categories')
+    .then(function(res) { return res.json() })
+    .then(console.log)
+}
+
+fetchCategories()
+  .then(function(categories) {
+    var liContainer = document.createDocumentFragment()
+    categories.forEach(function(cat) {
+      var li = document.createElement('li')
+      var a = document.createElement('a')
+      li.appendChild(a)
+      a.innerText = cat.name
+      a.href = [location.origin, pagesId.ZINE, 'articles?cat=' + cat.id].join('/')
+      liContainer.appendChild(li)
+    })
+  })
