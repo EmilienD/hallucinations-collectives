@@ -14,13 +14,11 @@
 
 @keyframes rain {
   from {
-    top: -50%;
-    bottom: 0;
+    top: -20%;
   }
 
   to {
     top: 0;
-    bottom: 50%;
   }
 }
 
@@ -208,6 +206,7 @@ svg {
 .raindrop-container>div {
   display: flex;
   justify-content: center;
+  height: 20%;
 }
 
 .frame {
@@ -275,6 +274,15 @@ svg {
   flex-direction: column;
 }
 
+.banner {
+  display: flex;
+  justify-content: center;
+}
+
+.banner>svg {
+  width: 90%;
+}
+
 /* navigation */
 
 nav>ul {
@@ -286,7 +294,7 @@ nav>ul {
   text-transform: uppercase;
   font-family: Helvetica, Arial, sans-serif;
   color: white;
-  font-size: 5em;
+  font-size: 1.5em;
   padding: 0;
   margin: 0;
 }

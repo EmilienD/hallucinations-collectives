@@ -39,20 +39,12 @@
             <div class="loadable-svg-container" data-svg-asset-name="<?php echo get_bloginfo('template_directory'); ?>/assets/chaine.svg"></div>
             <div class="loadable-svg-container" data-svg-asset-name="<?php echo get_bloginfo('template_directory'); ?>/assets/chaine.svg"></div>
           </div>
-          <div class="raindrop-container">
-            <div class="loadable-svg-container" data-svg-asset-name="<?php echo get_bloginfo('template_directory'); ?>/assets/chaine.svg"></div>
-            <div class="loadable-svg-container" data-svg-asset-name="<?php echo get_bloginfo('template_directory'); ?>/assets/chaine.svg"></div>
-            <div class="loadable-svg-container" data-svg-asset-name="<?php echo get_bloginfo('template_directory'); ?>/assets/chaine.svg"></div>
-            <div class="loadable-svg-container" data-svg-asset-name="<?php echo get_bloginfo('template_directory'); ?>/assets/chaine.svg"></div>
-            <div class="loadable-svg-container" data-svg-asset-name="<?php echo get_bloginfo('template_directory'); ?>/assets/chaine.svg"></div>
-            <div class="loadable-svg-container" data-svg-asset-name="<?php echo get_bloginfo('template_directory'); ?>/assets/chaine.svg"></div>
-          </div>
         </div>
       </div>
       <div class="column-right">
         <div class="top-line">
           <div>
-            <div class="loadable-svg-container flag" data-svg-asset-name="<?php echo get_bloginfo('template_directory'); ?>/assets/drapeauwebzine.svg"></div>
+            <div class="loadable-svg-container banner" data-svg-asset-name="<?php echo get_bloginfo('template_directory'); ?>/assets/magazine-0.svg"></div>
             <nav>
               <ul>
                 <li><a class="nav-buttons" data-section-id="articles">articles</a></li>
